@@ -8,10 +8,13 @@
  * Controller of the callendarApp
  */
 angular.module('callendarApp')
-  .controller('MainCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('MainCtrl', function ($scope, $auth) {
+
+    $scope.checkAuth = function(){
+
+      return $auth.isAuthenticated();
+
+    };
+
+
   });

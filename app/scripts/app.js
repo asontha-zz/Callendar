@@ -15,9 +15,10 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'satellizer'
   ])
-  .config(function ($routeProvider) {
+  .config(function ($routeProvider, $authProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
@@ -29,7 +30,17 @@ angular
         controller: 'AboutCtrl',
         controllerAs: 'about'
       })
+      .when('/login', {
+        templateUrl: 'views/login.html',
+        controller: 'LoginCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
+
+    $authProvider.google({
+      url: "/",
+      clientId: '664828335395-6c45ij0utr8ts0e4dm6028ocfq7tl4tf'
+    });
+
   });
